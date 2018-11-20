@@ -8,8 +8,8 @@ module.exports = {
     collectCoverage: false,
     "globals": {
         "ts-jest": {
-          "skipBabel": true,
-          "enableTsDiagnostics": false
+          "babelConfig": true,
+          "diagnostics": false
         }
     }
 };

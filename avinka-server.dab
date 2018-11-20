@@ -1,0 +1,62 @@
+{
+  "Services": {
+    "dejavu": {
+      "Image": "appbaseio/dejavu@sha256:924f4119b0b8655617f3daa2a12f89397a6794c415041ca34c46f82058db02f3",
+      "Networks": [
+        "default"
+      ],
+      "Ports": [
+        {
+          "Port": 1358,
+          "Protocol": "tcp"
+        }
+      ]
+    },
+    "elasticsearch": {
+      "Env": [
+        "transport.host=127.0.0.1",
+        "http.port=9200",
+        "http.cors.allow-origin=*",
+        "http.cors.enabled=true",
+        "bootstrap.memory_lock=true",
+        "ES_JAVA_OPTS=-Xms2g -Xmx2g"
+      ],
+      "Image": "docker.elastic.co/elasticsearch/elasticsearch@sha256:ba8380a7fb2d03e4f477cc4e8e3679a7ea7e33311d2ec1b5507fb9a0d2273b57",
+      "Networks": [
+        "default"
+      ],
+      "Ports": [
+        {
+          "Port": 9200,
+          "Protocol": "tcp"
+        },
+        {
+          "Port": 9300,
+          "Protocol": "tcp"
+        }
+      ]
+    },
+    "mongodb": {
+      "Args": [
+        "mongod",
+        "--smallfiles",
+        "--logpath=/dev/null"
+      ],
+      "Env": [
+        "MONGO_DATA_DIR=/data/db",
+        "MONGO_LOG_DIR=/dev/null"
+      ],
+      "Image": "mongo@sha256:8fd980fa17d0f1b455d6329249501bd922d0e8d1e3691bc19edf656923942fb0",
+      "Networks": [
+        "default"
+      ],
+      "Ports": [
+        {
+          "Port": 27017,
+          "Protocol": "tcp"
+        }
+      ]
+    }
+  },
+  "Version": "0.1"
+}
